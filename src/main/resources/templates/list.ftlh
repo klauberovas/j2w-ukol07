@@ -5,9 +5,10 @@
 
     [#if posts?has_content]
         <div class="row">
-            [#list posts as post]
+            [#list posts.content as post]
                 [@c.postCard post /]
             [/#list]
+            [@c.pager posts /]
         </div>
     [#else]
         <div class="alert alert-info">Žádné příspěvky k zobrazení.</div>

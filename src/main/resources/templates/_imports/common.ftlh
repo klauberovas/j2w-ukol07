@@ -48,6 +48,13 @@
     </div>
 [/#macro]
 
+[#macro pager posts]
+<div class="pagination">
+    <a href="?page=${posts.number - 1}" class="btn btn-primary [#if !posts.hasPrevious()]disabled[/#if]">Předchozí</a>
+    <a href="?page=${posts.number + 1}" class="btn btn-primary [#if !posts.hasNext()]disabled[/#if]">Další</a>
+</div>
+[/#macro]
+
 [#macro postDetail post]
     <article>
         <h1 class="mb-4">${post.title}</h1>

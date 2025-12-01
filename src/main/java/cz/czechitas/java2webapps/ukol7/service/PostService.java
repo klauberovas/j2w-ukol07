@@ -7,7 +7,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Service
 public class PostService {
@@ -22,9 +21,9 @@ public class PostService {
      * Vrací seznam prvních 10 postů s datem publikace do dnešního dne,
      * seřazených sestupně podle data publikace (od nejnovějšího po nejstarší).
      */
-    public List<Post> listPostsByPublished() {
-        Page<Post> page = postRepository.findAllByPublished(PageRequest.of(0,10), LocalDate.now());
-        return page.getContent();
+    public Page<Post> listPostsByPublished(int page) {
+        return postRepository.findAllByPublished(PageRequest.of(page, 20), LocalDate.now());
+
     }
 
     /**
