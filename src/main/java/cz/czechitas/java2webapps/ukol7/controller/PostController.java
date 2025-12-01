@@ -17,7 +17,7 @@ public class PostController {
     @GetMapping("")
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView("list");
-        modelAndView.addObject("posts", postService.list());
+        modelAndView.addObject("posts", postService.listPostsByPublished());
         return modelAndView;
     }
 
