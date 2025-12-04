@@ -1,15 +1,8 @@
 package cz.czechitas.java2webapps.ukol7.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.UniqueElements;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class Post {
@@ -17,11 +10,21 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false, unique = true)
     private String slug;
+
+    @Column(nullable = false, length = 100)
     private String author;
+
+    @Column(nullable = false, length = 255)
     private String title;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String perex;
+
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String body;
+
     private LocalDate published;
 
     public Long getId() {

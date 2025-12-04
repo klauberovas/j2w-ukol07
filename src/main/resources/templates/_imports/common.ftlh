@@ -40,7 +40,7 @@
                 <div class="card-text">
                     ${post.perex?no_esc}
                 </div>
-                <a href="/${post.slug}" class="btn btn-primary btn-sm mt-3">
+                <a href="/post/${post.slug}" class="btn btn-primary btn-sm mt-3">
                     Přečíst celý příspěvek →
                 </a>
             </div>
@@ -56,30 +56,34 @@
 [/#macro]
 
 [#macro postDetail post]
-    <article>
-        <h1 class="mb-4">${post.title}</h1>
+    [#if post??]
+        <article>
+            <h1 class="mb-4">${post.title}</h1>
 
-        <div class="mb-4 pb-3 border-bottom">
-            <small class="text-muted">
-                Autor: <strong>${post.author}</strong> |
-                Publikováno: <strong>${post.published?string("d.M.yyyy")}</strong>
-            </small>
-        </div>
+            <div class="mb-4 pb-3 border-bottom">
+                <small class="text-muted">
+                    Autor: <strong>${post.author}</strong> |
+                    Publikováno: <strong>${post.published?string("d.M.yyyy")}</strong>
+                </small>
+            </div>
 
-        <div class="lead mb-4">
-            ${post.perex?no_esc}
-        </div>
+            <div class="lead mb-4">
+                ${post.perex?no_esc}
+            </div>
 
-        <div class="post-content">
-            ${post.body?no_esc}
-        </div>
+            <div class="post-content">
+                ${post.body?no_esc}
+            </div>
 
-        <hr class="my-5">
+            <hr class="my-5">
 
-        <div>
-            <a href="/" class="btn btn-secondary">
-                ← Zpět na seznam příspěvků
-            </a>
-        </div>
-    </article>
+            <div>
+                <a href="/" class="btn btn-secondary">
+                    ← Zpět na seznam příspěvků
+                </a>
+            </div>
+        </article>
+    [#else]
+        <div class="alert alert-warning" role="alert">Příspěvek nebyl naleze.</div>
+    [/#if]
 [/#macro]

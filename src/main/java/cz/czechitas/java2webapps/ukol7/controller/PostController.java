@@ -22,7 +22,7 @@ public class PostController {
         return modelAndView;
     }
 
-    @GetMapping("/{slug}")
+    @GetMapping("/post/{slug}")
     public ModelAndView detail(@PathVariable String slug) {
         ModelAndView modelAndView = new ModelAndView("detail");
         modelAndView.addObject("post", postService.singlePost(slug));
